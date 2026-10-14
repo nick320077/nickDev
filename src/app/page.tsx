@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -12,52 +13,53 @@ import {
   Truck,
   ShieldCheck,
 } from "lucide-react";
-import { categories, productCount } from "@/lib/catalog";
+import { categories, productCount, money } from "@/lib/catalog";
 import { getProducts } from "@/lib/db";
 import { ProductCard } from "@/components/product-card";
 export const dynamic = "force-dynamic";
 const icons = [Layers, Grid2X2, PanelsTopLeft, PaintBucket, Hammer, BrickWall];
 export default async function Home() {
   const products = await getProducts();
+  const featured = products.find((p) => p.id === "plaster-30") || products[0];
   return (
     <main id="main" className="container home">
-      <section className="hero">
-        <div className="hero-copy">
-          <span className="eyebrow">
-            <span /> ДЛЯ ТИХ, ХТО БУДУЄ
-          </span>
+      <section className="campaign" aria-label="Матеріал у центрі уваги">
+        <Image
+          src="/products/warehouse-bag.png"
+          alt="Матеріал на п’єдесталі в просторі складу — художня демо-візуалізація"
+          fill
+          priority
+          sizes="(max-width: 760px) 100vw, 1280px"
+          className="campaign-image"
+        />
+        <span className="campaign-edition">ОСНОВА / MATERIAL COLLECTION</span>
+        <div className="campaign-copy">
+          <span className="eyebrow muted">МАТЕРІАЛИ З ХАРАКТЕРОМ</span>
           <h1>
             Великі ідеї.
             <br />
-            Міцна <em>основа.</em>
+            <em>Міцна основа.</em>
           </h1>
           <p>
-            Від першої цеглини до останнього штриха.
-            <br />
-            Усе для будівництва та ремонту — в одному місці.
+            Знайомтеся з матеріалами,
+            <br />з яких починається ваш простір.
           </p>
-          <Link className="button primary" href="/catalog">
-            Обрати матеріали <ArrowUpRight size={19} />
+          <Link
+            className="button primary"
+            href={featured ? `/products/${featured.slug}` : "/catalog"}
+          >
+            Дивитися матеріал <ArrowUpRight size={18} />
           </Link>
-          <div className="hero-caption">
-            <span>01 /</span> Матеріали, з яких починається дім
-          </div>
+          {featured && (
+            <div className="campaign-product">
+              <span>{featured.name}</span>
+              <strong>
+                {money(featured.price)} <small>/ {featured.unit}</small>
+              </strong>
+            </div>
+          )}
         </div>
-        <div className="hero-art" aria-hidden="true">
-          <div className="art-grid" />
-          <div className="arch arch-back" />
-          <div className="arch arch-front" />
-          <div className="art-step step-one" />
-          <div className="art-step step-two" />
-          <div className="art-step step-three" />
-          <div className="art-block" />
-          <div className="art-label">
-            BUILD SOMETHING
-            <br />
-            <b>THAT LASTS.</b>
-          </div>
-          <span className="art-number">О / 01</span>
-        </div>
+        <span className="campaign-art-note">Художня демо-візуалізація</span>
       </section>
       <div className="benefits">
         <div>
@@ -82,6 +84,31 @@ export default async function Home() {
           </span>
         </div>
       </div>
+      <section className="section">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow muted">КОЛЕКЦІЯ МАТЕРІАЛІВ</span>
+            <h2>Кожен матеріал — окрема історія</h2>
+          </div>
+          <Link href="/catalog" className="text-link">
+            До каталогу <ArrowRight size={18} />
+          </Link>
+        </div>
+        <div className="product-grid home-gallery">
+          {products
+            .filter((p) =>
+              [
+                "plaster-30",
+                "mineral-wool",
+                "primer-10",
+                "roller-250",
+              ].includes(p.id),
+            )
+            .map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+        </div>
+      </section>
       <section className="section">
         <div className="section-heading">
           <div>
@@ -115,31 +142,6 @@ export default async function Home() {
               </Link>
             );
           })}
-        </div>
-      </section>
-      <section className="section">
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow muted">ВИБІР ДЛЯ ВАШОГО РЕМОНТУ</span>
-            <h2>Почніть із найнеобхіднішого</h2>
-          </div>
-          <Link href="/catalog" className="text-link">
-            До каталогу <ArrowRight size={18} />
-          </Link>
-        </div>
-        <div className="product-grid">
-          {products
-            .filter((p) =>
-              [
-                "plaster-30",
-                "mineral-wool",
-                "primer-10",
-                "roller-250",
-              ].includes(p.id),
-            )
-            .map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
         </div>
       </section>
       <section className="about-banner" id="about">

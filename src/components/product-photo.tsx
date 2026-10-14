@@ -1,5 +1,11 @@
 import type { Product } from "@/lib/catalog";
-export function ProductPhoto({ product }: { product: Product }) {
+export function ProductPhoto({
+  product,
+  image,
+}: {
+  product: Product;
+  image?: string;
+}) {
   const cell = product.imageCell;
   return (
     <div
@@ -7,7 +13,7 @@ export function ProductPhoto({ product }: { product: Product }) {
       aria-label={product.name}
       className="product-photo"
       style={{
-        backgroundImage: `url(${product.image})`,
+        backgroundImage: `url(${image || product.image})`,
         backgroundPosition: `${(cell % 3) * 50}% ${Math.floor(cell / 3) * 50}%`,
       }}
     />

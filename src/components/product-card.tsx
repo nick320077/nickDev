@@ -4,10 +4,10 @@ import { type Product, money } from "@/lib/catalog";
 import { AddToCart } from "./purchase";
 export function ProductCard({ product: p }: { product: Product }) {
   return (
-    <article className="product-card">
+    <article className="product-card" data-material={p.category}>
       <Link href={`/products/${p.slug}`} className="product-image">
-        {p.oldPrice && <span className="badge">Вигідна ціна</span>}
-        <ProductPhoto product={p} />
+        <span className="product-index">{p.brand}</span>
+        <ProductPhoto product={p} image="/products/material-cutouts.png" />
         <span className="image-note">Демо-зображення</span>
       </Link>
       <div className="product-body">
