@@ -1539,3 +1539,383 @@ dd {
     height: 95px;
   }
 }
+
+/* Alternate product direction: every material leads its own composition. */
+.material-showcase {
+  --material-accent: #315540;
+  --material-paper: #eeeade;
+}
+.material-insulation {
+  --material-accent: #655b36;
+  --material-paper: #f0eddf;
+}
+.material-paint {
+  --material-accent: #4a6657;
+  --material-paper: #e9eee5;
+}
+.material-tools {
+  --material-accent: #374e4d;
+  --material-paper: #e7ece9;
+}
+.material-masonry {
+  --material-accent: #80513d;
+  --material-paper: #f1e8dd;
+}
+.material-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 35px;
+  margin: 0 0 26px;
+}
+.material-heading > div {
+  max-width: 740px;
+}
+.material-heading h1 {
+  font-size: clamp(30px, 3.4vw, 50px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin: 13px 0 0;
+}
+.material-heading > p {
+  flex: 0 0 230px;
+  font-size: 15px;
+  color: var(--material-accent);
+  line-height: 1.5;
+  margin: 0 0 4px;
+}
+.material-stage {
+  height: 580px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--material-paper);
+  isolation: isolate;
+}
+.material-scene {
+  object-fit: cover;
+  object-position: center 58%;
+  z-index: -3;
+}
+.material-atmosphere {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #e7e6dc08 35%,
+    #f0eee55c 70%,
+    #edeadfd9 100%
+  );
+  z-index: -2;
+}
+.material-object {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  left: 7%;
+  bottom: 19%;
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(10px 12px 12px #3b2d2324);
+}
+.material-scene-label {
+  position: absolute;
+  top: 24px;
+  left: 27px;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #f3f0e4;
+  text-shadow: 0 1px 7px #0008;
+}
+.material-order {
+  position: absolute;
+  right: 28px;
+  bottom: 40px;
+  width: 350px;
+  border: 1px solid #ffffff8c;
+  background: #f9f8f1f2;
+  backdrop-filter: blur(12px);
+  padding: 27px;
+  border-radius: 8px;
+  box-shadow: 0 12px 45px #3b352213;
+}
+.material-order-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 9px;
+  color: #879080;
+}
+.material-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin: 33px 0 0;
+  color: var(--material-accent);
+}
+.material-brand small {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.material-price {
+  margin: 22px 0 25px;
+}
+.material-price strong {
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+.material-price > span {
+  color: var(--muted);
+  font-size: 11px;
+  margin-left: 9px;
+}
+.material-order .purchase {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.material-order .purchase .primary {
+  flex: 1;
+  gap: 12px;
+  padding: 14px 13px;
+  background: var(--material-accent);
+}
+.material-order .quantity {
+  height: 45px;
+}
+.material-order .quantity button {
+  padding: 9px;
+}
+.material-order-note {
+  color: #8a8e81;
+  font-size: 9px;
+  line-height: 1.6;
+  margin: 17px 0 0;
+}
+.material-art-note {
+  position: absolute;
+  bottom: 14px;
+  left: 27px;
+  color: #efeee5;
+  font-size: 8px;
+  text-shadow: 0 1px 6px #0008;
+}
+.material-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 23px 3px;
+  border-bottom: 1px solid var(--line);
+}
+.material-caption > div {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 12px;
+}
+.material-caption-number {
+  color: var(--material-accent);
+  font-size: 11px;
+}
+.material-caption small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 6px;
+}
+.material-caption > a {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--material-accent);
+}
+.material-editorial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 35px 0 0;
+}
+.material-editorial p {
+  font-size: 26px;
+  line-height: 1.3;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+.material-editorial p span {
+  color: var(--muted);
+}
+.material-editorial a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--material-accent);
+}
+@media (max-width: 1100px) {
+  .material-object {
+    left: 2%;
+    width: 420px;
+    height: 420px;
+    bottom: 21%;
+  }
+  .material-order {
+    right: 20px;
+    width: 320px;
+    padding: 23px;
+  }
+  .material-heading > p {
+    flex-basis: 190px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 760px) {
+  .material-heading {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .material-heading h1 {
+    font-size: 33px;
+    letter-spacing: -1.2px;
+    max-width: 520px;
+  }
+  .material-heading > p {
+    font-size: 12px;
+    margin: 14px 0 0;
+  }
+  .material-stage {
+    height: auto;
+    padding-top: 410px;
+    overflow: hidden;
+  }
+  .material-scene {
+    height: 410px !important;
+    object-fit: cover;
+    object-position: 27% center;
+  }
+  .material-atmosphere {
+    height: 410px;
+    background: linear-gradient(180deg, transparent 65%, #eeeade88);
+  }
+  .material-object {
+    width: 340px;
+    height: 340px;
+    left: calc(50% - 170px);
+    top: 5px;
+    bottom: auto;
+  }
+  .material-scene-label {
+    top: 17px;
+    left: 18px;
+    font-size: 7px;
+  }
+  .material-order {
+    position: relative;
+    width: auto;
+    right: auto;
+    bottom: auto;
+    margin: 0;
+    border: none;
+    border-top: 1px solid #ffffff60;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 23px;
+    background: var(--material-paper);
+    backdrop-filter: none;
+  }
+  .material-brand {
+    margin-top: 20px;
+    font-size: 23px;
+  }
+  .material-price {
+    margin: 15px 0 19px;
+  }
+  .material-price strong {
+    font-size: 39px;
+  }
+  .material-order .purchase {
+    flex-wrap: nowrap;
+  }
+  .material-order .purchase .primary {
+    font-size: 11px;
+    gap: 9px;
+  }
+  .material-art-note {
+    top: 389px;
+    bottom: auto;
+    left: 18px;
+    font-size: 7px;
+  }
+  .material-caption {
+    padding: 20px 0;
+    gap: 12px;
+  }
+  .material-caption > div {
+    gap: 10px;
+    font-size: 10px;
+  }
+  .material-caption > a {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .material-editorial {
+    align-items: start;
+    flex-direction: column;
+    padding-top: 26px;
+    gap: 17px;
+  }
+  .material-editorial p {
+    font-size: 23px;
+  }
+  .material-editorial a {
+    font-size: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .material-order {
+    padding: 18px;
+  }
+  .material-order .purchase .primary {
+    padding: 12px 8px;
+    font-size: 10px;
+  }
+}
+/* Keep the entire hero object visible above the plinth. */
+.material-stage {
+  height: 740px;
+}
+.material-scene {
+  object-position: center;
+}
+.material-object {
+  bottom: 27%;
+}
+@media (max-width: 1100px) {
+  .material-stage {
+    height: 640px;
+  }
+  .material-object {
+    bottom: 28%;
+  }
+}
+@media (max-width: 760px) {
+  .material-stage {
+    height: auto;
+  }
+  .material-object {
+    width: 300px;
+    height: 300px;
+    left: calc(50% - 150px);
+    top: 0;
+    bottom: auto;
+  }
+}

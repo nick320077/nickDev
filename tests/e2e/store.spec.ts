@@ -75,3 +75,34 @@ test("responsive layout, missing product and unavailable stock", async ({
     page.getByRole("heading", { name: "Сторінку не знайдено" }),
   ).toBeVisible();
 });
+
+test("product presentation works across all material categories", async ({
+  page,
+}) => {
+  for (const slug of [
+    "plaster-30",
+    "mineral-wool",
+    "drywall-12",
+    "primer-10",
+    "roller-250",
+    "block-100",
+  ]) {
+    const response = await page.goto(`/products/${slug}`);
+    expect(response?.ok()).toBe(true);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: "Додати до кошика", exact: true }),
+    ).toBeEnabled();
+    await page
+      .getByRole("link", { name: "Деталі матеріалу", exact: true })
+      .click();
+    await expect(
+      page.getByRole("heading", { name: "Характеристики", exact: true }),
+    ).toBeInViewport();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth,
+      ),
+    ).toBe(true);
+  }
+});
