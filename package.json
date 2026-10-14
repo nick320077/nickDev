@@ -1,0 +1,56 @@
+{
+  "name": "nickdev",
+  "version": "1.0.0",
+  "description": "Интернет-магазин строительных материалов.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "db:seed": "node --env-file=.env.local scripts/seed.mjs",
+    "format": "prettier --write src scripts tests *.json *.ts *.mjs *.yaml .github/workflows/*.yml README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick320077/nickDev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/nick320077/nickDev/issues"
+  },
+  "homepage": "https://github.com/nick320077/nickDev#readme",
+  "private": true,
+  "dependencies": {
+    "lucide-react": "^1.57.0",
+    "next": "^16.4.0",
+    "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.4"
+  },
+  "engines": {
+    "node": "^22.13.0 || >=24.0.0"
+  }
+}
