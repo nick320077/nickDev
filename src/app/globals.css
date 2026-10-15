@@ -17,7 +17,7 @@ body {
   margin: 0;
   color: var(--ink);
   background: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), Arial, sans-serif;
   font-size: 14px;
 }
 a {
@@ -2227,4 +2227,37 @@ dd {
     font-size: 17px;
     min-height: 25px;
   }
+}
+
+/* Manrope: measured headings, readable names and steady price columns. */
+body {
+  font-synthesis: none;
+}
+h1,
+h2,
+.material-heading h1 {
+  letter-spacing: -0.035em;
+}
+.campaign-copy h1 {
+  letter-spacing: -0.04em;
+}
+.brand {
+  letter-spacing: -0.065em;
+}
+.product-name {
+  height: auto;
+  min-height: 2.9em;
+  line-height: 1.45;
+}
+.product-bottom strong,
+.material-price strong,
+.campaign-product strong,
+.cart-row > strong,
+.cart-total strong {
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -0.04em;
+}
+.quantity input,
+.quantity output {
+  font-variant-numeric: tabular-nums;
 }
