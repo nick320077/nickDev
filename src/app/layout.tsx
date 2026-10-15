@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import Link from "next/link";
 import { CartProvider } from "@/components/cart-provider";
 import { Header } from "@/components/header";
 import "./globals.css";
+const manrope = localFont({
+  src: "./fonts/Manrope-Variable.ttf",
+  variable: "--font-manrope",
+  weight: "200 800",
+  style: "normal",
+  display: "swap",
+});
 export const metadata: Metadata = {
   title: {
     default: "ОСНОВА — матеріали для ваших ідей",
@@ -17,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="uk">
+    <html lang="uk" className={manrope.variable}>
       <body>
         <CartProvider>
           <a href="#main" className="skip-link">

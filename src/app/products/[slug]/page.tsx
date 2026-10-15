@@ -1,11 +1,9 @@
-import { ProductPhoto } from "@/components/product-photo";
+import { ProductShowcase } from "@/components/product-showcase";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ShieldCheck, Package, Truck } from "lucide-react";
-import { categories, money } from "@/lib/catalog";
+import { categories } from "@/lib/catalog";
 import { getProducts } from "@/lib/db";
-import { Purchase } from "@/components/purchase";
 import { ProductCard } from "@/components/product-card";
 export const dynamic = "force-dynamic";
 export async function generateMetadata({
@@ -36,58 +34,8 @@ export default async function ProductPage({
         <span>/</span>
         <Link href={`/catalog?category=${p.category}`}>{category.name}</Link>
       </div>
-      <div className="product-detail">
-        <div className="detail-image">
-          <ProductPhoto product={p} />
-          <span className="image-note">
-            Демонстраційне зображення матеріалу
-          </span>
-        </div>
-        <section className="detail-info">
-          <span className="eyebrow muted">
-            {p.brand} / {category.name}
-          </span>
-          <h1>{p.name}</h1>
-          <div className="detail-meta">
-            <span className={p.inStock ? "stock" : "stock unavailable"}>
-              {p.inStock ? "Є в наявності" : "Немає в наявності"}
-            </span>
-            <span>Артикул: {p.sku}</span>
-          </div>
-          <div className="detail-price">
-            {p.oldPrice && <del>{money(p.oldPrice)}</del>}
-            <strong>{money(p.price)}</strong>
-            <span>/ {p.unit}</span>
-          </div>
-          <Purchase product={p} />
-          <p className="demo-note">
-            Демонстраційна ціна. Реальні замовлення та оплата поки недоступні.
-          </p>
-          <div className="detail-services">
-            <div>
-              <Package size={20} />
-              <span>
-                Зручно планувати покупки
-                <small>Кошик зберігається у вашому браузері</small>
-              </span>
-            </div>
-            <div>
-              <Truck size={20} />
-              <span>
-                Доставка на наступному етапі
-                <small>Зараз доступний перегляд і кошик</small>
-              </span>
-            </div>
-            <div>
-              <ShieldCheck size={20} />
-              <span>
-                Інформація під рукою<small>Опис і характеристики нижче</small>
-              </span>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div className="product-description">
+      <ProductShowcase product={p} />
+      <div className="product-description" id="specifications">
         <section>
           <h2>Про матеріал</h2>
           <p>{p.description}</p>
